@@ -1,0 +1,537 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang3082{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.22621}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang10 create database Dulce_Aroma;\par
+use Dulce_Aroma;\par
+\par
+create table Usuario(\par
+    Id_Usu int primary key,\par
+    Nombre_Usu varchar(30) not null,\par
+    Apellido_Usu varchar(30) not null,\par
+    Rol_Usu varchar(20) not null,\par
+    Contrase\'f1a_Usu varchar(20) unique\par
+);\par
+insert into Usuario (Id_Usu, Nombre_Usu, Apellido_Usu, Rol_Usu, Contrase\'f1a_Usu)\par
+values \par
+(500, 'Carlos', 'Gonzalez', 'Admin', 'password@123'),\par
+(501, 'Ana', 'Perez', 'Vendedor', 'passw0rd@321'),\par
+(502, 'Luis', 'Martinez', 'Cliente', 'usuario@!22'),\par
+(503, 'Maria', 'Lopez', 'Admin', 'admin@!123'),\par
+(504, 'Juan', 'Sanchez', 'Vendedor', '1234@pass'),\par
+(505, 'Laura', 'Gomez', 'Cliente', 'clave@!567'),\par
+(506, 'Ricardo', 'Ramirez', 'Admin', 'admin!@321'),\par
+(507, 'Elena', 'Diaz', 'Cliente', 'contrase\'f1a@!33'),\par
+(508, 'Pedro', 'Torres', 'Vendedor', 'clave123@!'),\par
+(509, 'Julia', 'Vega', 'Admin', 'admin@4567'),\par
+(510, 'David', 'Hernandez', 'Cliente', 'user@!234'),\par
+(511, 'Claudia', 'Fernandez', 'Vendedor', 'passw0rd!@123'),\par
+(512, 'Alfredo', 'Castro', 'Cliente', 'secret@!321'),\par
+(513, 'Carla', 'Morales', 'Admin', 'admin@pass!123'),\par
+(514, 'Raul', 'Suarez', 'Vendedor', 'pass@1234'),\par
+(515, 'Rosa', 'Serrano', 'Cliente', 'mi@contrase\'f1a'),\par
+(516, 'Juan', 'Martinez', 'Admin', 'admin!567'),\par
+(517, 'Patricia', 'Salazar', 'Cliente', 'clave@pass!'),\par
+(518, 'Mario', 'Ruiz', 'Vendedor', 'admin@123!'),\par
+(519, 'Marta', 'Gonzalez', 'Cliente', 'user@!pass'),\par
+(520, 'Isaias', 'Rojas', 'Cliente', 'nombre!lol');\par
+\par
+create table Pedido(\par
+    Nro_Pedido int primary key,\par
+    Fecha_Pedido datetime not null,\par
+    Metodo_Pago varchar(20) not null default 'Efectivo',\par
+    Total_Pedido float not null,\par
+    Estado_Pedido varchar(15) default 'En Camino',\par
+    Id_Usu int,\par
+    constraint FK_Id_Usu foreign key (Id_Usu) references Usuario(Id_Usu)\par
+);\par
+insert into Pedido (Nro_Pedido, Fecha_Pedido, Metodo_Pago, Total_Pedido, Estado_Pedido, Id_Usu)\par
+values \par
+(1500, '2024-11-01 10:30:00', 'Efectivo', 150.00, 'En Camino', 500),\par
+(1501, '2024-11-01 11:00:00', 'Tarjeta', 250.50, 'Entregado', 501),\par
+(1502, '2024-11-01 12:30:00', 'Efectivo', 100.00, 'Cancelado', 502),\par
+(1503, '2024-11-01 14:00:00', 'Transferencia', 320.00, 'En Camino', 503),\par
+(1504, '2024-11-02 09:00:00', 'Efectivo', 180.75, 'Entregado', 504),\par
+(1505, '2024-11-02 10:30:00', 'Tarjeta', 230.00, 'En Camino', 505),\par
+(1506, '2024-11-02 11:00:00', 'Efectivo', 125.00, 'Entregado', 506),\par
+(1507, '2024-11-02 13:30:00', 'Transferencia', 200.00, 'Cancelado', 507),\par
+(1508, '2024-11-03 09:00:00', 'Efectivo', 300.00, 'En Camino', 508),\par
+(1509, '2024-11-03 10:00:00', 'Tarjeta', 450.00, 'Entregado', 509),\par
+(1510, '2024-11-03 12:00:00', 'Transferencia', 180.50, 'En Camino', 510),\par
+(1511, '2024-11-03 15:30:00', 'Efectivo', 120.00, 'Entregado', 511),\par
+(1512, '2024-11-04 10:00:00', 'Efectivo', 550.00, 'Cancelado', 512),\par
+(1513, '2024-11-04 12:00:00', 'Tarjeta', 310.00, 'En Camino', 513),\par
+(1514, '2024-11-04 13:00:00', 'Transferencia', 400.00, 'Entregado', 514),\par
+(1515, '2024-11-04 14:30:00', 'Efectivo', 220.00, 'En Camino', 515),\par
+(1516, '2024-11-05 09:30:00', 'Tarjeta', 350.00, 'Entregado', 516),\par
+(1517, '2024-11-05 10:30:00', 'Efectivo', 160.00, 'Cancelado', 517),\par
+(1518, '2024-11-05 11:00:00', 'Transferencia', 270.00, 'En Camino', 518),\par
+(1519, '2024-11-05 12:30:00', 'Efectivo', 190.00, 'Entregado', 519);\par
+go\par
+\par
+CREATE TABLE Categor\'eda (\par
+    ID_Categoria INT PRIMARY KEY, \par
+    Nombre_cate TEXT NOT NULL\par
+);\par
+INSERT INTO Categor\'eda (ID_Categoria, Nombre_cate)\par
+VALUES \par
+(5001, 'Caf\'e9 en grano'),\par
+(5002, 'Caf\'e9 molido'),\par
+(5003, 'M\'e1quinas de caf\'e9'),\par
+(5004, 'Accesorios para caf\'e9'),\par
+(5005, 'Tazas y vasos'),\par
+(5006, 'Caf\'e9 instant\'e1neo'),\par
+(5007, 'Caf\'e9 org\'e1nico'),\par
+(5008, 'Caf\'e9 gourmet'),\par
+(5009, 'Caf\'e9 descafeinado'),\par
+(5010, 'Caf\'e9 aromatizado');\par
+\par
+CREATE TABLE Producto (\par
+    Cod_Barras INT PRIMARY KEY,\par
+    Nombre_produ VARCHAR(255) UNIQUE NOT NULL,\par
+    Descripcion_produ TEXT,\par
+    Precio_uni DECIMAL(10, 2) CHECK (Precio_uni > 0), \par
+    Categor\'eda_ID INT,\par
+    Disponibilidad_produ TEXT NOT NULL,\par
+    CONSTRAINT FK_Categor\'eda\par
+        FOREIGN KEY (Categor\'eda_ID) REFERENCES Categor\'eda(ID_Categoria) \par
+);\par
+INSERT INTO Producto (Cod_Barras, Nombre_produ, Descripcion_produ, Precio_uni, Categor\'eda_ID, Disponibilidad_produ)\par
+VALUES\par
+(15001, 'Caf\'e9 en grano Premium', 'Caf\'e9 en grano de alta calidad, originario de Colombia', 15.50, 5001, 'Disponible'),\par
+(15002, 'Caf\'e9 molido Fino', 'Caf\'e9 molido ideal para espresso, sabor suave', 12.00, 5002, 'Disponible'),\par
+(15003, 'M\'e1quina de caf\'e9 espresso', 'M\'e1quina autom\'e1tica para preparar caf\'e9 espresso profesional', 120.00, 5003, 'Disponible'),\par
+(15004, 'Prensa francesa', 'Prensa francesa de vidrio para preparar caf\'e9 filtrado', 18.00, 5004, 'Disponible'),\par
+(15005, 'Taza de cer\'e1mica', 'Taza de cer\'e1mica para caf\'e9, capacidad 300ml', 8.00, 5005, 'Disponible'),\par
+(15006, 'Caf\'e9 instant\'e1neo', 'Caf\'e9 instant\'e1neo de la marca Barista, sabor suave y cremoso', 5.50, 5006, 'Disponible'),\par
+(15007, 'Caf\'e9 org\'e1nico', 'Caf\'e9 org\'e1nico certificado, sin qu\'edmicos ni pesticidas', 20.00, 5007, 'Disponible'),\par
+(15008, 'Caf\'e9 gourmet', 'Caf\'e9 gourmet de origen brasile\'f1o, tostado artesanalmente', 25.00, 5008, 'Disponible'),\par
+(15009, 'Caf\'e9 descafeinado', 'Caf\'e9 sin cafe\'edna, sabor robusto y suave', 10.00, 5009, 'Disponible'),\par
+(15010, 'Caf\'e9 de vainilla', 'Caf\'e9 aromatizado con vainilla, para un toque dulce', 12.50, 5010, 'Disponible'),\par
+(15011, 'Molino de caf\'e9 manual', 'Molino manual para caf\'e9, ideal para caf\'e9 en grano', 22.00, 5001, 'Disponible'),\par
+(15012, 'Cafetera italiana', 'Cafetera italiana para preparar caf\'e9 de forma tradicional', 30.00, 5003, 'Disponible'),\par
+(15013, 'Funda para cafetera', 'Funda protectora para cafetera de acero inoxidable', 7.00, 5004, 'No Disponible'),\par
+(15014, 'Taza de viaje', 'Taza de acero inoxidable para llevar caf\'e9, con aislamiento t\'e9rmico', 15.00, 5005, 'Disponible'),\par
+(15015, 'Caf\'e9 molido expreso', 'Caf\'e9 molido para preparar expreso, 100% ar\'e1bica', 14.00, 5002, ' No Disponible'),\par
+(15016, 'Caf\'e9 molido fuerte', 'Caf\'e9 molido de tueste oscuro, para un sabor intenso', 13.00, 5002, 'Disponible'),\par
+(15017, 'Caf\'e9 org\'e1nico tostado', 'Caf\'e9 org\'e1nico tostado a mano, de origen africano', 21.00, 5007, 'Disponible'),\par
+(15018, 'Caf\'e9 gourmet especial', 'Caf\'e9 gourmet con un toque de chocolate amargo', 26.50, 5008, 'Disponible'),\par
+(15019, 'Caf\'e9 descafeinado suave', 'Caf\'e9 descafeinado, suave y perfecto para la noche', 11.00, 5009, 'No Disponible'),\par
+(15020, 'Caf\'e9 molido aromatizado', 'Caf\'e9 molido con aroma a nuez y especias', 13.50, 5010, 'Disponible');\par
+\par
+create table DETALLE_PEDIDO(\par
+\tab detalle_pedido_ID int primary key,\par
+\tab cantidad int not null,\par
+\tab precio_total decimal not null,\par
+\tab Nro_Pedido int,\par
+    constraint FK_Nro_Pedido foreign key (Nro_Pedido) references Pedido(Nro_Pedido),\par
+\tab Producto_ID int,\par
+\tab constraint FK_Producto_ID foreign key(Producto_ID) references Producto(Cod_Barras)\par
+);\par
+insert into DETALLE_PEDIDO(detalle_pedido_ID,cantidad,precio_total)\par
+values  (010, 2, 500.00),\par
+\tab\tab (020, 1, 200.00),\par
+\tab\tab (030, 5, 1500.00),\par
+\tab\tab (040, 3, 750.00),\par
+\tab\tab (050, 4, 1000.00),\par
+\tab\tab (060, 2, 400.00),\par
+\tab\tab (070, 6, 1800.00),\par
+\tab\tab (080, 1, 300.00),\par
+\tab\tab (090, 7, 2100.00),\par
+\tab\tab (0100, 3, 900.00),\par
+\tab\tab (0110, 4, 1200.00),\par
+\tab\tab (0120, 2, 600.00),\par
+\tab\tab (0130, 5, 1300.00),\par
+\tab\tab (0140, 1, 250.00),\par
+\tab\tab (0150, 3, 800.00),\par
+\tab\tab (0160, 6, 1700.00),\par
+\tab\tab (0170, 2, 450.00),\par
+\tab\tab (0180, 5, 1250.00),\par
+\tab\tab (0190, 3, 850.00),\par
+\tab\tab (0200, 4, 1100.00);\par
+go\par
+create table CLIENTE(\par
+\tab cliente_id int primary key,\par
+\tab nombre_cliente varchar(30)not null,\par
+\tab telefono int not null,\par
+\tab correo varchar(30) unique,\par
+\tab ciudad varchar(30)not null,\par
+\tab );\par
+\tab\par
+insert into CLIENTE (cliente_id, nombre_cliente, telefono, correo, ciudad)\par
+values  (1, 'Juan Perez', 301234567 , 'juan.perez@example.com', 'Bogot\'e1'),\par
+\tab\tab (2, 'Maria Lopez', 307654321 , 'maria.lopez@example.com', 'Medell\'edn'),\par
+\tab\tab (3, 'Carlos Sanchez', 301122334 , 'carlos.sanchez@example.com', 'Cali'),\par
+\tab\tab (4, 'Ana Gomez', 304433221 , 'ana.gomez@example.com', 'Barranquilla'),\par
+\tab\tab (5, 'Luis Rodriguez', 305566778 , 'luis.rodriguez@example.com', 'Cartagena'),\par
+\tab\tab (6, 'Laura Martinez', 309988776 , 'laura.martinez@example.com', 'Bucaramanga'),\par
+\tab\tab (7, 'Diego Ramirez', 308877665 , 'diego.ramirez@example.com', 'Pereira'),\par
+\tab\tab (8, 'Sofia Torres', 307766554 , 'sofia.torres@example.com', 'Manizales'),\par
+\tab\tab (9, 'Jose Alvarez', 306655443 , 'jose.alvarez@example.com', 'Santa Marta'),\par
+\tab\tab (10, 'Paula Fernandez', 305544332 , 'paula.fernandez@example.com', 'Neiva'),\par
+\tab\tab (11, 'Andrea Martinez', 303344556 , 'andrea.martinez@example.com', 'Bogot\'e1'),\par
+\tab\tab (12, 'Ricardo Gomez', 302233445 , 'ricardo.gomez@example.com', 'Medell\'edn'),\par
+\tab\tab (13, 'Monica Diaz', 304455667 , 'monica.diaz@example.com', 'Cali'),\par
+\tab\tab (14, 'David Ortiz', 305566772 , 'david.ortiz@example.com', 'Barranquilla'),\par
+\tab\tab (15, 'Elena Morales', 306677889 , 'elena.morales@example.com', 'Cartagena'),\par
+\tab\tab (16, 'Miguel Torres', 307788991 , 'miguel.torres@example.com', 'Bucaramanga'),\par
+\tab\tab (17, 'Patricia Ruiz', 308899002 , 'patricia.ruiz@example.com', 'Pereira'),\par
+\tab\tab (18, 'Fernando Vargas', 309900113 , 'fernando.vargas@example.com', 'Manizales'),\par
+\tab\tab (19, 'Clara Jimenez', 301011122 , 'clara.jimenez@example.com', 'Santa Marta'),\par
+\tab\tab (20, 'Jorge Herrera', 301122333 , 'jorge.herrera@example.com', 'Neiva');\par
+\par
+go\par
+--Consultas\par
+select * from Usuario where Rol_Usu = 'Cliente';\par
+select Nombre_Usu, Apellido_Usu, Rol_Usu from Usuario where Id_Usu=513 OR Id_Usu=504;\par
+\par
+select SUM(precio_total) AS totalvendido\par
+from DETALLE_PEDIDO;\par
+\par
+select SUM(cantidad) AS TotalCantidad,\par
+       SUM(precio_total) AS TotalPrecio\par
+from DETALLE_PEDIDO;\par
+\par
+select AVG(precio_total) AS PromedioPrecio\par
+from DETALLE_PEDIDO;\par
+\par
+select SUM(Precio_uni) AS Valor_Men\'fa\par
+from Producto;\par
+go\par
+--Consultas con condicionales\par
+select cliente_id, nombre_cliente, telefono, correo, ciudad\par
+from CLIENTE\par
+where ciudad = 'Medell\'edn';\par
+\par
+select cliente_id, nombre_cliente, telefono, correo, ciudad\par
+from CLIENTE\par
+where nombre_cliente LIKE '%Luis%';\par
+\par
+select *\par
+from Producto\par
+where Precio_uni >= 30.00;\par
+go\par
+-- Trigger para validar que la contrase\'f1a tenga al menos un caracter especial\par
+create trigger Validacion_Simbolo\par
+on Usuario\par
+after insert, update\par
+as\par
+begin\par
+    if exists(\par
+        select 1\par
+        from inserted\par
+        where Contrase\'f1a_Usu not like '%[.%-@!:%]%'\par
+    )\par
+    begin\par
+        raiserror ('Debe contener al menos un caracter especial (. , @ , - , ! , : )', 16, 1);\par
+        rollback transaction;\par
+    end\par
+end;\par
+go\par
+--Joins\par
+select concat(Usuario.Nombre_Usu,' ',Usuario.Apellido_Usu)as Nombre_Usuario,\par
+Pedido.Nro_Pedido\par
+from Usuario\par
+inner join Pedido\par
+on Usuario.Id_Usu=Pedido.Id_Usu;\par
+\par
+select Usuario.Nombre_Usu, (select count(*) from Pedido where Pedido.Id_Usu = Usuario.Id_Usu) as NumeroDePedidos\par
+from Usuario;\par
+\par
+select Id_Usu, Total_Pedido\par
+from Pedido\par
+where Total_Pedido > (select avg(Total_Pedido) from Pedido where Pedido.Id_Usu = Pedido.Id_Usu);\par
+\par
+select C.cliente_id, C.nombre_cliente, DP.detalle_pedido_ID, DP.cantidad, DP.precio_total\par
+from CLIENTE C\par
+inner join DETALLE_PEDIDO DP on C.cliente_id = DP.detalle_pedido_ID;\par
+\par
+select C.cliente_id, C.nombre_cliente, DP.detalle_pedido_ID, DP.cantidad, DP.precio_total\par
+from CLIENTE C\par
+right join DETALLE_PEDIDO DP on C.cliente_id = DP.detalle_pedido_ID;\par
+\par
+go\par
+--Sentencias en bloque\par
+declare\par
+\tab @Pedido decimal = 90.00\par
+begin\par
+\tab if exists(select Nro_Pedido, Total_Pedido from Pedido where(Total_Pedido<=@Pedido))\par
+\tab (select Nro_Pedido, Total_Pedido from Pedido where Total_Pedido<= @Pedido)\par
+else\par
+\tab print'No hay pedidos de menos de 140.00'\par
+end;\par
+go\par
+declare\par
+\tab @Estado varchar(50)= 'Entregado'\par
+begin\par
+\tab if exists(select Id_Usu, Estado_Pedido from Pedido where(Estado_Pedido=@Estado))\par
+\tab (select Id_Usu, Estado_Pedido from Pedido where(Estado_Pedido=@Estado))\par
+else\par
+\tab print 'A\'fan no se han entregado ning\'fan pedido'\par
+end\par
+go\par
+\par
+declare\par
+     @cantidad int = 5;\par
+begin \par
+\tab\tab if exists( select * from DETALLE_PEDIDO where cantidad = @cantidad)\par
+\tab\tab\tab begin( select * from DETALLE_PEDIDO where cantidad >= @cantidad)\par
+\tab\tab end\par
+\tab\tab else\par
+\tab\tab\tab begin\par
+\tab\par
+\tab\tab select 'pedidos al detal'\par
+\tab\tab end\par
+end;\par
+go\par
+declare\par
+\tab @producto decimal=15.00\par
+begin\par
+if exists(select Nombre_produ, Precio_uni from Producto where(Precio_uni < @producto))\par
+\tab\tab\tab (select Nombre_produ, Precio_uni from Producto where(Precio_uni < @producto))\par
+else\par
+\tab print 'No hay productos que cuesten menos de 15.00'\par
+end;\par
+\par
+declare\par
+\tab @disponibilidad varchar(30)='Disponible'\par
+begin\par
+if exists(select Nombre_produ, Disponibilidad_produ from Producto where(Disponibilidad_produ = @disponibilidad))\par
+\tab\tab\tab (select Nombre_produ, Disponibilidad_produ from Producto where(Disponibilidad_produ = @disponibilidad))\par
+else\par
+\tab print 'No hay disponibilidad del producto'\par
+end;\par
+\par
+go\par
+-- Procedimientos almacenados\par
+\par
+create or alter proc P_Pedidos15\par
+    @pedidos int=15\par
+as\par
+begin\par
+    if exists (select 1 from Pedido\par
+               group by Fecha_Pedido\par
+               having count(*) > @pedidos)\par
+    begin\par
+        select Fecha_Pedido, count(*) as Total_Pedidos\par
+        from Pedido\par
+        group by Fecha_Pedido\par
+        having count(*) > @pedidos\par
+    end\par
+    else \par
+    begin\par
+        select 'No hay fechas con m\'e1s de 15 pedidos' as Alerta;\par
+    end\par
+end;\par
+go\par
+\par
+create or alter proc P_PromedioPedidos\par
+    @usuario varchar(50)='%',\par
+    @suma int output,\par
+    @promedio numeric(10,2) output\par
+as\par
+begin\par
+    select * from Pedido where Id_Usu like @usuario;\par
+    select @suma = sum(Nro_Pedido), @promedio = avg(Nro_Pedido)\par
+    from Pedido\par
+    where Id_Usu like @usuario;\par
+end;\par
+go\par
+\par
+declare \par
+    @sum int, \par
+    @resultado numeric(10,2);\par
+\par
+exec P_PromedioPedidos 'Usuario', @sum output, @resultado output\par
+if @sum = 0\par
+begin\par
+    select 'No se encontraron pedidos' as 'Pedidos Totales',\par
+           'No se pudo calcular el promedio' as 'Promedio Pedidos';\par
+end\par
+else\par
+begin\par
+    select @sum as 'Pedidos Totales', @resultado as 'Promedio Pedidos';\par
+end;\par
+go\par
+create procedure p_pedidos\par
+\tab as\par
+\tab select * from DETALLE_PEDIDO where cantidad <=4;\par
+\par
+go\par
+\par
+create procedure p_verificar_pedidos\par
+as\par
+begin\par
+    declare @cantidad int = 4;\par
+\par
+    if exists (select * from DETALLE_PEDIDO where cantidad = @cantidad)\par
+    begin\par
+        select * from DETALLE_PEDIDO where cantidad <= @cantidad;\par
+    end\par
+    else\par
+    begin\par
+        select 'este pedido esta catalogado como al por mayor' AS Mensaje;\par
+    end\par
+end;\par
+go\par
+CREATE or alter proc p_ProductosPorCantidad\par
+@cantidad INT = 5 \par
+as\par
+select * from Categor\'eda;\par
+begin\par
+\tab if exists ( select 1 from Categor\'eda\par
+\tab group by ID_Categoria\par
+\tab having count(*) > \par
+ @cantidad)\par
+\par
+begin\par
+SELECT Nombre_cate COUNT(*)\par
+AS Total_Productos\par
+FROM  Producto\par
+GROUP BY Nombre_cate\par
+HAVING COUNT(*) > @cantidad;\par
+END\par
+ELSE\par
+BEGIN\par
+SELECT 'No hay categor\'edas con m\'e1s de ' + CAST(@cantidad AS VARCHAR) + ' productos' AS Alerta;\par
+END\par
+END;\par
+go\par
+\par
+ CREATE OR ALTER PROCEDURE P_ProductosPorPrecio\par
+@precio_min DECIMAL(10, 2) = 10.00\par
+AS\par
+BEGIN\par
+ IF EXISTS ( SELECT 1 FROM Producto\par
+group by Precio_uni > @precio_min)\par
+BEGIN\par
+ SELECT Nombre_produc\par
+as  Producto,\par
+            Precio_uni \par
+            Precio_min\par
+FROM \par
+Producto\par
+> @precio_min\par
+    END\par
+    ELSE\par
+    BEGIN \par
+SELECT 'No hay productos con un precio superior a ' + CAST(@precio_min AS VARCHAR) AS Alerta;\par
+    END\par
+END;\par
+\par
+go\par
+-- Triggers\par
+create table triggers_bd (\par
+    nro_trigger int IDENTITY(1,1) primary key,\par
+    evento_tipo varchar(10),\par
+    tabla_cambio varchar(30),\par
+    fecha_cambio datetime default getdate(),\par
+    usuario_cambio varchar(50),\par
+    datos_antiguos varchar(500),\par
+    datos_nuevos varchar(500)\par
+);\par
+go\par
+\par
+create trigger trg_insert\par
+on Usuario\par
+after insert\par
+as\par
+begin\par
+    declare @xml_data varchar(500);\par
+\par
+    select @xml_data = (select * from inserted for xml path('Usuario'), root('Usuarios'));\par
+\par
+insert into triggers_bd(evento_tipo, tabla_cambio, usuario_cambio, datos_nuevos)\par
+  values(\par
+     'Insert',\par
+     'Usuario',\par
+      suser_name(),\par
+      cast(@xml_data as varchar(max))\par
+\tab   );\par
+end;\par
+go\par
+\par
+create trigger trg_update\par
+on Usuario\par
+after update\par
+as\par
+begin\par
+    declare @old_data varchar(500), @new_data varchar(500);\par
+\par
+    select @old_data = (select * from deleted for xml path('Usuario'), root('Usuarios'));\par
+    select @new_data = (select * from inserted for xml path('Usuario'), root('Usuarios'));\par
+\par
+    insert into triggers_bd(evento_tipo, tabla_cambio, usuario_cambio, datos_antiguos, datos_nuevos)\par
+    values\par
+    (\par
+        'Update',\par
+        'Usuario',\par
+        suser_name(),\par
+        cast(@old_data as varchar(max)),\par
+        cast(@new_data as varchar(max))\par
+    );\par
+end;\par
+go\par
+create trigger trg_delete\par
+on Usuario\par
+after delete\par
+as\par
+begin\par
+    declare @old_data varchar(500);\par
+\par
+    select @old_data = (select * from deleted for xml path('Usuario'), root('Usuarios'));\par
+\par
+    insert into triggers_bd(evento_tipo, tabla_cambio, usuario_cambio, datos_antiguos)\par
+    values\par
+    (\par
+        'Delete',\par
+        'Usuario',\par
+        suser_name(),\par
+        cast(@old_data as varchar(max))\par
+    );\par
+end;\par
+\par
+select * from triggers_bd;\par
+\par
+select name from sys.triggers where name in ('trg_insert', 'trg_update', 'trg_delete');\par
+\par
+\par
+insert into Usuario (Id_Usu, Nombre_usu, Apellido_usu, Rol_usu, Contrase\'f1a_usu)\par
+values (600, 'carlos', 'martinez', 'cliente', 'pasTO@123');\par
+insert into Usuario (Id_Usu, Nombre_usu, Apellido_usu, Rol_usu, Contrase\'f1a_usu)\par
+values (607, 'marlos', 'carton', 'cliente', 'marlos@123');\par
+insert into Usuario (Id_Usu, Nombre_usu, Apellido_usu, Rol_usu, Contrase\'f1a_usu)\par
+values (1152185263, 'Jenny', 'Rivera', 'Cliente', 'Jenny12@');\par
+\par
+insert into Usuario (Id_Usu, Nombre_usu, Apellido_usu, Rol_usu, Contrase\'f1a_usu)\par
+values (603, 'mar', 'tonos', 'cliente', 'mar@123');\par
+\par
+select * \par
+from triggers_bd \par
+where evento_tipo = 'insert' \par
+order by fecha_cambio desc;\par
+\par
+update usuario \par
+set nombre_usu = 'carlos updated' \par
+where id_usu = 600;\par
+\par
+select * \par
+from triggers_bd \par
+where evento_tipo = 'update' \par
+order by fecha_cambio desc;\par
+\par
+delete from usuario \par
+where id_usu = 600;\par
+\par
+select * \par
+from triggers_bd \par
+where evento_tipo = 'delete' \par
+order by fecha_cambio desc;\par
+\par
+select * \par
+from triggers_bd\par
+order by fecha_cambio desc;\par
+\par
+select top 6 evento_tipo, datos_nuevos\par
+from triggers_bd\par
+order by fecha_cambio desc;\par
+}
+ 
