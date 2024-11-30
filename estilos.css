@@ -1,0 +1,497 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; 
+    font-family: 'Arial', sans-serif; 
+}
+
+  
+   
+
+
+header {
+    display: flex; /* Usa flexbox para organizar el contenido */
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: space-between; /* Espacia el logo y el menú */
+    padding: 20px; /* Espaciado interno */
+    position: relative;
+    z-index: 2; /* Asegura que el header esté encima del video */
+    background-color: transparent; /* Totalmente transparente */
+}
+
+.logo img {
+    max-height: 80px; /* Ajusta la altura máxima del logo */
+}
+
+nav {
+    margin-left: 20px; /* Espaciado al lado del logo */
+}
+
+nav ul {
+    display: flex; /* Muestra los enlaces en una fila */
+    list-style-type: none; /* Quita los puntos de la lista */
+    padding: 0; /* Quita el padding */
+    margin: 0; /* Quita el margin */
+}
+
+nav ul li {
+    margin: 0 15px; /* Espaciado entre los enlaces */
+}
+
+nav ul li a {
+    color: rgb(255, 255, 255); /* Color del texto del enlace */
+    text-decoration: none; /* Quita el subrayado */
+    font-size: 1.1em; /* Tamaño del texto */
+    transition: color 0.3s; /* Añade una transición suave */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9); /* Sombra más gruesa */
+}
+nav ul li a:hover {
+    color: #ffcc00; /* Color al pasar el ratón */
+}
+
+.background-video {
+    position: fixed; /* Fija el video en la parte de fondo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 180%;
+   
+    
+}
+
+.video-background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que el video cubra todo el área */
+}
+
+.content {
+    position: relative;
+    z-index: 3; /* Asegura que el contenido esté por encima del video */
+    color: white; /* Cambia el color del texto */
+    text-align: center; /* Centra el texto */
+    padding: 20px;
+    
+}
+
+footer {
+    position: fixed; /* Fija el footer en la parte inferior */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent; /* Totalmente transparente */
+    color: rgb(255, 255, 255); /* Color del texto del footer */
+    text-align: center;
+    padding: 10px 0;
+    z-index: 2; /* Asegura que el footer esté por encima del video */
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9); /* Sombra más gruesa */
+}
+
+.footer-socials ul {
+    display: flex; /* Muestra los enlaces en una fila */
+    justify-content: center; /* Centra los enlaces */
+    list-style-type: none; /* Quita los puntos de la lista */
+    padding: 0; /* Quita el padding */
+}
+
+.footer-socials ul li {
+    margin: 0 15px; /* Espaciado entre los enlaces de redes sociales */
+}
+
+
+.footer-socials ul li a {
+    color: white; /* Color del texto de los enlaces */
+    text-decoration: none; /* Quita el subrayado */
+    transition: color 0.3s; /* Añade una transición suave */
+    color: inherit; /* Permitir que el color del icono sea el color heredado */
+    font-size: 1.5em; /* Tamaño de fuente más grande */
+}
+.footer-socials ul li a:hover {
+    color: #ffcc00; /* Color al pasar el ratón */
+   
+}
+
+
+.welcome-banner {
+    position: fixed; /* Fija el banner en la pantalla */
+    top: 50%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Centra el banner */
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo semitransparente */
+    color: #D2691E; /* Color del texto */
+    text-align: center; /* Centra el texto */
+    text-shadow: 4px 4px 10px #ffffff(255, 255, 255, 0.9); /* Sombra más intensa */
+    font-family: 'Roboto', sans-serif; /* Fuente general */
+    padding: 80px; /* Espaciado interno */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+    opacity: 0; /* Inicialmente oculto */
+    visibility: hidden; /* Evita que se pueda hacer clic en él */
+    transition: opacity 0.5s, visibility 0.5s; /* Transiciones suaves */
+    border-radius: 40px;
+    box-shadow: 0 8px 25px rgb(255, 255, 255); /* Sombra del banner más intensa */
+}
+
+.welcome-banner.show {
+    opacity: 1; /* Muestra el banner */
+    visibility: visible; /* Permite hacer clic en él */
+}
+
+.welcome-banner h1 {
+    margin: 0; /* Quita el margen */
+    font-size: 3em; /* Tamaño de fuente más grande */
+    text-shadow: 4px 4px 10px rgba(255, 255, 255, 0.9); /* Sombra más intensa */
+}
+
+.close-button {
+    position: absolute; /* Posiciona la "X" en la esquina */
+    top: 10px; /* Espaciado desde arriba */
+    right: 10px; /* Espaciado desde la derecha */
+    font-size: 2.9em; /* Tamaño de la "X" */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+    color: white; /* Color de la "X" */
+}
+
+.close-button:hover {
+    color: #ffcc00; /* Cambia el color al pasar el ratón */
+    
+}
+
+.coffee-image {
+    width: 100px; /* Ancho de la imagen */
+    height: auto; /* Altura automática para mantener proporciones */
+    display: block; /* Muestra como bloque */
+    margin: 10px auto; /* Centra la imagen */
+    animation: moveCoffee 1.5s infinite alternate; /* Animación de movimiento más rápida */
+}
+
+/* Definición de la animación */
+@keyframes moveCoffee {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); } /* Aumenta el movimiento hacia arriba */
+}
+.arrow {
+    font-size: 2em; /* Tamaño de las flechas */
+    color: #ddc34d; /* Color de las flechas */
+    animation: bounce 1s infinite; /* Animación de rebote */
+    display: inline-block; /* Permite que se alineen */
+    
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); } /* Rebote hacia arriba */
+}
+/* ------------------------- Estilos Generales ------------------------- */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    
+    background-image: url('/imagenes/vector-seamless-pattern-coffee-beans-600nw-2164525389\ fondo.webp'); /* Cambia la ruta de la imagen según tu estructura */
+    color: #3e2723; /* Color marrón oscuro */
+    padding-top: 70px;
+}
+
+/* ------------------------- Sección del Menú ------------------------- */
+.menu-section {
+    padding: 2px;
+    text-align: center;
+}
+
+.menu-section h1 {
+    font-size: 0.1em;
+    color: #3e2723; /* Marrón oscuro */
+    margin-bottom: 2px;
+    text-transform: uppercase;
+}
+
+/* ------------------------- Estilos de las Categorías en Grid ------------------------- */
+.menu-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Ajusta automáticamente el número de columnas según el tamaño de la pantalla */
+    gap: 50px;
+    justify-items: center;
+    padding: 100px;
+}
+
+.category {
+    background-color: #fff9e6; /* Fondo suave color crema */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+}
+
+.category h2 {
+    font-size: 0em;
+    color: #3e2723;
+    margin-bottom: 6px;
+}
+
+.category-image {
+    width: 14%;
+    height: 54px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* ------------------------- Productos de la Categoría ------------------------- */
+.category-products {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.menu-item {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 9%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.menu-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.menu-details h3 {
+    font-size: 1.5em;
+    color: #3e2723;
+}
+
+.menu-details p {
+    font-size: 1em;
+    color: #6b4f4b;
+}
+
+.price {
+    font-size: 1.2em;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* ------------------------- Responsividad ------------------------- */
+@media (max-width: 768px) {
+    .menu-categories {
+        grid-template-columns: 1fr 1fr; /* Dos columnas en pantallas más pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+
+}
+
+
+/* Estilos para el formulario */
+#contacto {
+    max-width: 50%;
+    margin: 10px auto;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+   
+   
+}
+
+
+#contacto h2 {
+    text-align: center;
+    color: #000000;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+
+form {
+    display: flex;
+    grid-gap: 30px;
+    background-color: #bd8b77;
+    padding: 20px; /* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    max-width: 400px; /* Limitar el ancho máximo */
+    margin: 0 auto; /* Centrar el formulario */
+    font-family: Arial, sans-serif; /* Fuente legible */
+}
+
+label {
+    font-size: 1rem;
+    color: #000000;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+button {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 10px 100px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+
+
+/* estilos para unete */
+#unete {
+    
+    justify-content: center;
+    align-items: center;
+    height: 500vh; /* Utiliza toda la altura de la ventana del navegador */
+    text-align: center;
+    padding: 0px;
+    box-sizing: border-box;
+    
+   
+}
+
+#unete h2 {
+    color: #000000;
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+#unete p {
+    
+    color: #fff8f8;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+form {
+    display: grid;
+    grid-gap: 0px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+label {
+    font-size: 1rem;
+    color:#000000;
+    text-align: left;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+button {
+    background-color: #7f5a3f;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Estilo para el campo de carga de archivo (Hoja de Vida) */
+input[type="file"] {
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Estilo al pasar el ratón sobre el campo */
+input[type="file"]:hover {
+    background-color: #f9f9f9;
+}
+
+
+
+
+/* Estilo general para la sección Misión y Visión */
+#mision-vision {
+    background-color: #e2c0b2; /* Fondo blanco */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 20px; /* Bordes redondeados */
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1); /* Sombra suave y sutil */
+    max-width: 900px; /* Ancho máximo */
+    margin: 60px auto; /* Centrado con un buen margen */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente elegante */
+    line-height: 1.8; /* Espaciado entre líneas */
+    text-align: center; /* Centrar el contenido */
+    max-width: 1200px
+}
+
+/* Estilo para los títulos (h2) de Misión y Visión */
+#mision-vision h2 {
+    font-size: 32px; /* Tamaño grande */
+    font-weight: 700; /* Negrita */
+    color: #2C3E50; /* Color oscuro para elegancia */
+    margin-bottom: 20px; /* Espaciado debajo del título */
+    letter-spacing: 1px; /* Espaciado entre letras */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    font-family: 'Roboto', sans-serif; /* Fuente moderna para títulos */
+}
+
+/* Estilo para los párrafos dentro de la sección */
+#mision-vision p {
+    font-size: 20px; /* Tamaño de fuente cómodo para leer */
+    color: #34495E; /* Color gris oscuro elegante */
+    font-weight: 400; /* Peso normal de la fuente */
+    margin-bottom: 30px; /* Espaciado debajo de los párrafos */
+    text-align: justify; /* Justificar el texto */
+    line-height: 1.8; /* Espaciado entre líneas para mayor legibilidad */
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Estilo para los bordes */
+#mision-vision p::before {
+    content: '➤'; /* Agregar un símbolo atractivo al inicio de cada párrafo */
+    font-size: 24px; /* Tamaño del símbolo */
+    color: #3498DB; /* Color azul elegante */
+    margin-right: 10px; /* Espacio entre el símbolo y el texto */
+}
+
+/* Efecto hover en los títulos */
+#mision-vision h2:hover {
+    color: #3498DB; /* Color azul cuando el título se pasa el ratón */
+    transition: color 0.3s ease; /* Efecto de transición suave */
+}
+
+/* Sombra sutil en los párrafos al pasar el ratón */
+#mision-vision p:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra al pasar el ratón */
+    transition: box-shadow 0.3s ease; /* Transición suave para el efecto */
+}
